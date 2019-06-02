@@ -17,7 +17,7 @@ const App: React.FC = () => {
           <NavBar />
           <Switch>
             <Route path='/login' component={LoginPage} />
-            <Route path='/' exact render={LoginWrapper(Home)} />
+            <Route path='/' exact component={LoginWrapper(Home)} />
           </Switch>
         </div>
       </Provider>

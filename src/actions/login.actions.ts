@@ -8,7 +8,7 @@ export const loginTypes = {
   UPDATE_FIELD: 'UPDATE_FIELD',
 }
 
-export const login = (username:string, password:string, history:any) => async dispatch => {
+export const login = (username:string, password:string) => async dispatch => {
   try {
     const response = await loginClient.post('/', {
       username: username,
@@ -20,7 +20,6 @@ export const login = (username:string, password:string, history:any) => async di
         payload: user,
         type: loginTypes.SET_SELF
       })
-      history.push('/')
     } else if(response.status === 401) {
       dispatch({type: loginTypes.INVALID_CREDENTIALS})
     } else {
