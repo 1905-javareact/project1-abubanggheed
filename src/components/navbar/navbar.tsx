@@ -15,6 +15,9 @@ export class NavBar extends Component {
               <Link to="/" className="unset-anchor nav-link">Home</Link>
             </li>
             <li className="nav-item active">
+              <Link to="/users" className="unset-anchor nav-link">Users</Link>
+            </li>
+            <li className="nav-item active">
               <Link to="/login" className="unset-anchor nav-link">Log In</Link>
             </li>
           </ul>

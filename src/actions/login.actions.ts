@@ -1,4 +1,5 @@
 import { loginClient } from "../axios/login.client";
+import { usersClient } from "../axios/user.client";
 
 export const loginTypes = {
   INVALID_CREDENTIALS: 'INVALID_CREDENTIALS',
@@ -38,4 +39,18 @@ export const updateField = (field:string, value:string) => dispatch => {
       value
     }
   })
+}
+
+export const getSelf = () => async dispatch => {
+  try {
+    const response = await usersClient.get('/self')
+    if(response.status === 200) {
+      dispatch({
+        type: loginTypes.SET_SELF,
+        payload: response.data
+      })
+    }
+  } catch (error) {
+    console.log(error)
+  }
 }
