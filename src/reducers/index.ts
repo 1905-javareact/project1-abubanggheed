@@ -27,6 +27,7 @@ export interface IUsers {
 
 export interface IReimbursements {
   all: Reimbursement[]
+  user: Reimbursement[]
   single: Reimbursement
 }
 
