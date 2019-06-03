@@ -5,11 +5,12 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { LoginPage } from './components/login/page';
 import { Home } from './components/home/home';
 import { LoginWrapper } from './components/loginwrapper/loginwrapper';
-import { NavBar } from './components/navbar/navbar';
+import NavBar from './components/navbar/navbar.container';
 import Initializer from './components/initialize/initialize'
 import { Provider } from 'react-redux';
 import { store } from './store';
-import { UsersPage } from './components/users/users.component';
+import UsersPage from './components/users/users.container';
+import Dashboard from './components/dashboard/dashboard.container';
 
 const App: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const App: React.FC = () => {
           <Switch>
             <Route path='/login' component={LoginPage} />
             <Route path='/users' exact component={LoginWrapper(UsersPage)} />
+            <Route path='/dashboard' exact component={LoginWrapper(Dashboard)} />
             <Route path='/' exact component={LoginWrapper(Home)} />
           </Switch>
         </div>
