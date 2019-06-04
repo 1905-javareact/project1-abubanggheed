@@ -24,6 +24,8 @@ export const loginReducer = (state = initialState, action) => {
         ...state,
         errorMessage: 'Something went wrong. Try again later'
       }
+    case 'CLEAR_ALL':
+      return initialState
     default:
       return state
   }

@@ -13,6 +13,8 @@ export const selfReducer = (state:User = initialState, action:any) => {
 
     case loginTypes.UNSET_SELF:
       return initialState
+    case 'CLEAR_ALL':
+      return initialState
     default:
       return state
   }

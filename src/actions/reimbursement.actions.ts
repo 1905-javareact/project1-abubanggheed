@@ -2,11 +2,8 @@ import { reimbursementsClient } from "../axios/reimbursement.client";
 
 export const reimbursementTypes = {
   SET_ALL_REIMBURSEMENTS: 'SET_ALL_REIMBURSEMENTS',
-  SET_SINGLE_REIMBURSEMENTS: 'SET_SINGLE_REIMBURSEMENTS',
   SET_USER_REIMBURSEMENTS: 'SET_USER_REIMBURSEMENTS',
-  CLEAR_ALL_REIMBURSEMENTS: 'CLEAR_ALL_REIMBURSEMENTS',
-  CLEAR_USER_REIMBURSEMENTS: 'CLEAR_USER_REIMBURSEMENTS',
-  CLEAR_SINGLE_REIMBURSMENTS: 'CLEAR_SINGLE_REIMBURSEMENTS',
+  APPEND_USER_REIMBURSEMENTS: 'APPEND_USER_REIMBURSEMENTS',
   UPDATE_REIMBURSEMENT: 'UPDATE_REIMBURSEMENT'
 }
 
@@ -15,6 +12,20 @@ export const getUserReimbursements = (id) => async dispatch => {
   if(response.status === 200) {
     dispatch({
       type: reimbursementTypes.SET_USER_REIMBURSEMENTS,
+      payload: response.data
+    })
+  }
+}
+
+export const newReimbursement = (amount:number, description:string, type:number) => async dispatch => {
+  let response = await reimbursementsClient.post('/', {
+    amount: amount,
+    description: description,
+    type: type
+  })
+  if(response.status === 201) {
+    dispatch({
+      type: reimbursementTypes.APPEND_USER_REIMBURSEMENTS,
       payload: response.data
     })
   }

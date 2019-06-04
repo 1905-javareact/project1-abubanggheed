@@ -54,3 +54,14 @@ export const getSelf = () => async dispatch => {
     console.log(error)
   }
 }
+
+export const logOut = () => async dispatch => {
+  try {
+    const response = await loginClient.delete('/')
+    if(response.status === 205) {
+      dispatch({ type: 'CLEAR_ALL' })
+    }
+  } catch (error) {
+    
+  }
+}

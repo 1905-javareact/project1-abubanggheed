@@ -14,6 +14,13 @@ export const reimbursementReducer = (state:IReimbursements = initialState, actio
         ...state,
         user: action.payload
       }
+    case reimbursementTypes.APPEND_USER_REIMBURSEMENTS:
+      return {
+        ...state,
+        user: [action.payload, ...state.user]
+      }
+    case 'CLEAR_ALL':
+      return initialState
     default:
       return state
   }

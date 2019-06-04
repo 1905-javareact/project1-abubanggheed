@@ -3,12 +3,17 @@ import { Link } from 'react-router-dom';
 
 interface INavBarProps {
   role: string
+  logOut: () => void
 }
 
 const managerRolls = ['finance-manager', 'admin']
 // const adminRolls = ['admin']
 
 export class NavBar extends Component<INavBarProps> {
+
+  handleClick = () => {
+    this.props.logOut()
+  }
 
   render() {
     return (
@@ -27,9 +32,9 @@ export class NavBar extends Component<INavBarProps> {
             {managerRolls.includes(this.props.role) && <li className="nav-item active">
               <Link to="/users" className="unset-anchor nav-link">Users</Link>
             </li>}
-            <li className="nav-item active">
-              <Link to="/login" className="unset-anchor nav-link">Log In</Link>
-            </li>
+            {this.props.role && <li className="nav-item active">
+              <button onClick={this.handleClick} className="btn unset-anchor nav-link">Log Out</button>
+            </li>}
           </ul>
         </div>
       </nav>

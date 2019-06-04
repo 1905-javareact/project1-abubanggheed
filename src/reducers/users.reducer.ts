@@ -9,6 +9,8 @@ export const usersReducer = (state: IUsers = initialState, action) => {
       return {
         all: action.payload
       }
+    case 'CLEAR_ALL':
+      return initialState
     default:
       return state
   }
