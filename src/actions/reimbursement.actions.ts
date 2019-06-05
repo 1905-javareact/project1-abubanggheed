@@ -44,3 +44,17 @@ export const getStatusReimbursements = (status:number) => async dispatch => {
     })
   }
 }
+
+export const approveDenyReimbursement = (id:number, newStatus:number, from:string) => async dispatch => {
+  let response = await reimbursementsClient.patch('/', {
+    reimbursementId: id,
+    status: newStatus
+  })
+  if(response.status === 200) {
+    dispatch({
+      type: reimbursementTypes.UPDATE_REIMBURSEMENT,
+      payload: response.data,
+      from: from
+    })
+  }
+}

@@ -56,7 +56,7 @@ export class RequestsPage extends Component<IRequestPageProps> {
               key={data.id}
               reimbursement={data}
               showAuthor={true}
-              showApproveDeny={true}
+              showApproveDeny={this.state.type === 1}
               />
             ))}
           </tbody>

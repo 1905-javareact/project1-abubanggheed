@@ -25,8 +25,8 @@ export class ReimbursementRow extends PureComponent<IReimbursementRowProps> {
         <td>{data.resolverName || 'pending'}</td>
         <td>{data.status}</td>
         {this.props.showAuthor && <td><DashboardLink author={data.authorId} /></td>}
-        {this.props.showApproveDeny && <td><ApproveButton author={data.authorId} /></td>}
-        {this.props.showApproveDeny && <td><DenyButton author={data.authorId} /></td>}
+        {this.props.showApproveDeny && <td><ApproveButton from={this.props.showAuthor ? 'all' :'user'} id={data.id} author={data.authorId} /></td>}
+        {this.props.showApproveDeny && <td><DenyButton from={this.props.showAuthor? 'all' :'user'} id={data.id} author={data.authorId} /></td>}
       </tr>
     )
   }

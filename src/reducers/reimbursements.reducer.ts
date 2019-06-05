@@ -29,6 +29,20 @@ export const reimbursementReducer = (state: IReimbursements = initialState, acti
         ...state,
         user: [action.payload, ...state.user]
       }
+    case reimbursementTypes.UPDATE_REIMBURSEMENT:
+      if (action.from === 'user') {
+        return {
+          ...state,
+          user: state.user.map(reimb => (
+            reimb.id === action.payload.id ? action.payload : reimb
+          ))
+        }
+      } else {
+        return {
+          ...state,
+          all: state.all.filter(reimb => reimb.id !== action.payload.id)
+        }
+      }
     case 'CLEAR_ALL':
       return initialState
     default:
