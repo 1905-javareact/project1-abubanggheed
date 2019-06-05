@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Reimbursement } from '../../models/reimbursement';
 import { ReimbursementRow } from './reimbursementrow';
-import { ReimbursementForm } from './reimbursementform.component';
+import ReimbursementForm from './form.container';
 
 interface IDashboardProps {
   selfId: number
@@ -31,12 +31,16 @@ export class Dashboard extends Component<IDashboardProps, IDashboardState> {
 
   render() {
     let reimbursementsToRender = this.props.reimbursements.map(
-      obj => <ReimbursementRow key={obj.id} reimbursement={obj} />
+      obj => <ReimbursementRow
+      key={obj.id} reimbursement={obj}
+      showAuthor={false}
+      showApproveDeny={false}
+      />
     )
     return (
       <div>
         <h4>Dashboard</h4>
-        <button onClick={this.handleClick}>New</button>
+        <button onClick={this.handleClick}>{this.state.editMode ? "Close" : "New"}</button>
         {this.state.editMode && <ReimbursementForm />}
         {this.props.selfId ? <>
           <h6>Reimbursements</h6>

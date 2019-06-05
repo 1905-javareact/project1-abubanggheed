@@ -13,7 +13,6 @@ interface InitializerProps {
 class Initializer extends Component<InitializerProps> {
 
   componentDidMount() {
-    console.log('mounted', this.props)
     this.props.getSelf()
   }
 

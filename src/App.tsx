@@ -2,7 +2,6 @@ import React from 'react';
 import './include/bootstrap'
 import './App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { LoginPage } from './components/login/page';
 import { Home } from './components/home/home';
 import { LoginWrapper } from './components/loginwrapper/loginwrapper';
 import NavBar from './components/navbar/navbar.container';
@@ -11,6 +10,7 @@ import { Provider } from 'react-redux';
 import { store } from './store';
 import UsersPage from './components/users/users.container';
 import Dashboard from './components/dashboard/dashboard.container';
+import RequestsPage from './components/requests/requests.container';
 
 const App: React.FC = () => {
   return (
@@ -20,9 +20,9 @@ const App: React.FC = () => {
           <Initializer />
           <NavBar />
           <Switch>
-            <Route path='/login' component={LoginPage} />
             <Route path='/users' exact component={LoginWrapper(UsersPage)} />
             <Route path='/dashboard' exact component={LoginWrapper(Dashboard)} />
+            <Route path='/requests' exact component={LoginWrapper(RequestsPage)} />
             <Route path='/' exact component={LoginWrapper(Home)} />
           </Switch>
         </div>

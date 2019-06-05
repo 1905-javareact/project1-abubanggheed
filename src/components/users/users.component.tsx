@@ -27,6 +27,7 @@ export class UsersPage extends PureComponent<IUserProps> {
               <th>First Name</th>
               <th>Last Name</th>
               <th>Role</th>
+              <th>Dashboard</th>
             </tr>
           </thead>
           <tbody>

@@ -32,6 +32,9 @@ export class NavBar extends Component<INavBarProps> {
             {managerRolls.includes(this.props.role) && <li className="nav-item active">
               <Link to="/users" className="unset-anchor nav-link">Users</Link>
             </li>}
+            {managerRolls.includes(this.props.role) && <li className="nav-item active">
+              <Link to="/requests" className="unset-anchor nav-link">Requests</Link>
+            </li>}
             {this.props.role && <li className="nav-item active">
               <button onClick={this.handleClick} className="btn unset-anchor nav-link">Log Out</button>
             </li>}
