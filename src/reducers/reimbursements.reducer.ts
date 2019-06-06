@@ -38,6 +38,15 @@ export const reimbursementReducer = (state: IReimbursements = initialState, acti
             reimb.id === action.payload.id ? action.payload : reimb
           ))
         }
+      } else if (action.from === 'patch') {
+        return {
+          ...state,
+          editOpen: false,
+          single: undefined,
+          all: state.all.map(reimb => (
+            reimb.id === action.payload.id ? action.payload : reimb
+          ))
+        }
       } else {
         return {
           ...state,
@@ -55,6 +64,14 @@ export const reimbursementReducer = (state: IReimbursements = initialState, acti
         ...state,
         single: undefined,
         editOpen: false
+      }
+    case reimbursementTypes.UPDATE_EDIT_REIMBURSEMENT:
+      return {
+        ...state,
+        single: {
+          ...state.single,
+          [action.payload.key]: action.payload.value
+        }
       }
     case 'CLEAR_ALL':
       return initialState

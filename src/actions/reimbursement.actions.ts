@@ -9,7 +9,8 @@ export const reimbursementTypes = {
   APPEND_USER_REIMBURSEMENTS: 'APPEND_USER_REIMBURSEMENTS',
   UPDATE_REIMBURSEMENT: 'UPDATE_REIMBURSEMENT',
   SET_SINGLE_REIMBURSEMENT: 'SET_SINGLE_REIMBURSEMENT',
-  CLOSE_SINGLE_REIMBURSEMENT: 'CLOSE_SINGLE_REIMBURSEMENT'
+  CLOSE_SINGLE_REIMBURSEMENT: 'CLOSE_SINGLE_REIMBURSEMENT',
+  UPDATE_EDIT_REIMBURSEMENT: 'UPDATE_EDIT_REIMBURSEMENT'
 }
 
 export const getUserReimbursements = (id) => async dispatch => {
@@ -77,4 +78,29 @@ export const cancleEditReimbursement = () => dispatch => {
   dispatch({
     type: reimbursementTypes.CLOSE_SINGLE_REIMBURSEMENT,
   })
+}
+
+export const updateEditReimbursement = (key:string, value:any) => dispatch => {
+  dispatch({
+    type: reimbursementTypes.UPDATE_EDIT_REIMBURSEMENT,
+    payload: {
+      key,
+      value
+    }
+  })
+}
+
+export const sendEditReimbursement = (fields:any) => async dispatch => {
+  let response = await reimbursementsClient.patch('', fields)
+  if(response.status === 200) {
+    dispatch({
+      type: reimbursementTypes.UPDATE_REIMBURSEMENT,
+      from: 'patch',
+      payload: response.data
+    })
+  } else {
+    dispatch({
+      type: reimbursementTypes.CLOSE_SINGLE_REIMBURSEMENT
+    })
+  }
 }
