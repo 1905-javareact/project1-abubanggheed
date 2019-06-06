@@ -29,7 +29,7 @@ export class ReimbursementRow extends PureComponent<IReimbursementRowProps> {
         {this.props.showAuthor && <td><DashboardLink author={data.authorId} /></td>}
         {this.props.showApproveDeny && <td><ApproveButton from={this.props.showAuthor ? 'all' :'user'} id={data.id} author={data.authorId} /></td>}
         {this.props.showApproveDeny && <td><DenyButton from={this.props.showAuthor? 'all' :'user'} id={data.id} author={data.authorId} /></td>}
-        {this.props.showEditable && <td><EditButton data={data} /></td>}
+        {this.props.showEditable && <td><EditButton data={data} author={data.authorId} /></td>}
       </tr>
     )
   }

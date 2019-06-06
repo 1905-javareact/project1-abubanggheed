@@ -4,6 +4,8 @@ import DashboardLink from '../buttons/dashboardlink.container';
 
 interface IUserProps {
   user: User
+  showEdit:boolean
+  openEdit: (u:User) => () => void
 }
 
 export class UserRow extends PureComponent<IUserProps> {
@@ -18,6 +20,7 @@ export class UserRow extends PureComponent<IUserProps> {
         <td>{usr.lastName}</td>
         <td>{usr.role}</td>
         <td><DashboardLink author={usr.userId} /></td>
+        {this.props.showEdit && <td><button onClick={this.props.openEdit(usr)}>Edit</button></td>}
       </tr>
     )
   }

@@ -3,6 +3,8 @@ import { Reimbursement } from '../../models/reimbursement';
 
 interface IEditButtonProps {
   data: Reimbursement
+  author: number
+  self: number
   openEditReimbursement: (data:Reimbursement) => void
 }
 
@@ -14,7 +16,7 @@ export class EditButton extends PureComponent<IEditButtonProps> {
 
   render() {
     return (
-      <button onClick={this.handleClick}>Edit</button>
+      <button onClick={this.handleClick} disabled={this.props.self === this.props.author}>Edit</button>
     )
   }
 }

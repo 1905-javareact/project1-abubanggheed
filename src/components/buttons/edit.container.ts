@@ -4,6 +4,7 @@ import { IState } from "../../reducers";
 import { openEditReimbursement } from '../../actions/reimbursement.actions';
 
 const mapStateToProps = (state:IState) => ({
+  self: state.self.userId
 })
 
 const mapDispatchToProps = {
