@@ -24,9 +24,8 @@ export class SingleUser extends Component<ISingleUserProps> {
     const { user, reimbursements } = this.props
     return (
       <div>
-        <h4>User Page</h4>
         {user && <div>
-          <h6>{`${user.firstName} ${user.lastName} --${user.username}`}</h6>
+          <h4>{`${user.firstName} ${user.lastName} --${user.username}`}</h4>
           <h6>{`${user.role}`}</h6>
           <h6>{`${user.email}`}</h6>
         </div>}
@@ -40,7 +39,8 @@ export class SingleUser extends Component<ISingleUserProps> {
               <th>Description</th>
               <th>Resolver</th>
               <th>Status</th>
-              <th>Edit</th>
+              <th>Approve</th>
+              <th>Deny</th>
             </tr>
           </thead>
           <tbody>
@@ -49,7 +49,8 @@ export class SingleUser extends Component<ISingleUserProps> {
               key={data.id}
               reimbursement={data}
               showAuthor={false}
-              showApproveDeny={false}
+              showApproveDeny={true}
+              showEditable={false}
               />
             ))}
           </tbody>

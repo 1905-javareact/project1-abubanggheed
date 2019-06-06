@@ -46,8 +46,7 @@ export class RequestsPage extends Component<IRequestPageProps> {
               <th>Resolver</th>
               <th>Status</th>
               <th>Dashboard</th>
-              {this.state.type === 1 && <th>Approve</th>}
-              {this.state.type === 1 && <th>Deny</th>}
+              <th>Edit</th>
             </tr>
           </thead>
           <tbody>
@@ -56,7 +55,8 @@ export class RequestsPage extends Component<IRequestPageProps> {
               key={data.id}
               reimbursement={data}
               showAuthor={true}
-              showApproveDeny={this.state.type === 1}
+              showApproveDeny={false}
+              showEditable={true}
               />
             ))}
           </tbody>

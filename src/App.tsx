@@ -12,6 +12,7 @@ import UsersPage from './components/users/users.container';
 import Dashboard from './components/dashboard/dashboard.container';
 import RequestsPage from './components/requests/requests.container';
 import SingleUser from './components/singleuser/singleuser.container';
+import ReimbursementEdit from './components/reimbursementeditform/reimbursement.edit.container';
 
 const App: React.FC = () => {
   return (
@@ -27,6 +28,7 @@ const App: React.FC = () => {
             <Route path='/user/:id' component={LoginWrapper(SingleUser)} />
             <Route path='/' exact component={LoginWrapper(Home)} />
           </Switch>
+          <ReimbursementEdit />
         </div>
       </Provider>
     </BrowserRouter >

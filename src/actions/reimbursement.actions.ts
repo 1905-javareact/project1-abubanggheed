@@ -1,4 +1,5 @@
 import { reimbursementsClient } from "../axios/reimbursement.client";
+import { Reimbursement } from "../models/reimbursement";
 
 export const reimbursementTypes = {
   SET_ALL_REIMBURSEMENTS: 'SET_ALL_REIMBURSEMENTS',
@@ -6,7 +7,9 @@ export const reimbursementTypes = {
   SET_USER_REIMBURSEMENTS: 'SET_USER_REIMBURSEMENTS',
   CLEAR_USER_REIMBURSEMENTS: 'CLEAR_USER_REIMBURSEMENTS',
   APPEND_USER_REIMBURSEMENTS: 'APPEND_USER_REIMBURSEMENTS',
-  UPDATE_REIMBURSEMENT: 'UPDATE_REIMBURSEMENT'
+  UPDATE_REIMBURSEMENT: 'UPDATE_REIMBURSEMENT',
+  SET_SINGLE_REIMBURSEMENT: 'SET_SINGLE_REIMBURSEMENT',
+  CLOSE_SINGLE_REIMBURSEMENT: 'CLOSE_SINGLE_REIMBURSEMENT'
 }
 
 export const getUserReimbursements = (id) => async dispatch => {
@@ -61,4 +64,17 @@ export const approveDenyReimbursement = (id:number, newStatus:number, from:strin
       from: from
     })
   }
+}
+
+export const openEditReimbursement = (reimbursement:Reimbursement) => dispatch => {
+  dispatch({
+    type: reimbursementTypes.SET_SINGLE_REIMBURSEMENT,
+    payload: reimbursement
+  })
+}
+
+export const cancleEditReimbursement = () => dispatch => {
+  dispatch({
+    type: reimbursementTypes.CLOSE_SINGLE_REIMBURSEMENT,
+  })
 }

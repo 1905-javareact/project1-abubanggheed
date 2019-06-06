@@ -30,6 +30,7 @@ export interface IReimbursements {
   all: Reimbursement[]
   user: Reimbursement[]
   single: Reimbursement
+  editOpen: Boolean
 }
 
 export interface IState {

@@ -35,6 +35,7 @@ export class Dashboard extends Component<IDashboardProps, IDashboardState> {
       key={obj.id} reimbursement={obj}
       showAuthor={false}
       showApproveDeny={false}
+      showEditable={false}
       />
     )
     return (

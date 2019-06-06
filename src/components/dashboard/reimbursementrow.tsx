@@ -3,11 +3,13 @@ import { Reimbursement } from '../../models/reimbursement';
 import ApproveButton from '../buttons/approve.container';
 import DenyButton from '../buttons/deny.container';
 import DashboardLink from '../buttons/dashboardlink.container';
+import EditButton from '../buttons/edit.container';
 
 interface IReimbursementRowProps {
   reimbursement: Reimbursement
   showAuthor:boolean
   showApproveDeny:boolean
+  showEditable:boolean
 }
 
 export class ReimbursementRow extends PureComponent<IReimbursementRowProps> {
@@ -27,6 +29,7 @@ export class ReimbursementRow extends PureComponent<IReimbursementRowProps> {
         {this.props.showAuthor && <td><DashboardLink author={data.authorId} /></td>}
         {this.props.showApproveDeny && <td><ApproveButton from={this.props.showAuthor ? 'all' :'user'} id={data.id} author={data.authorId} /></td>}
         {this.props.showApproveDeny && <td><DenyButton from={this.props.showAuthor? 'all' :'user'} id={data.id} author={data.authorId} /></td>}
+        {this.props.showEditable && <td><EditButton data={data} /></td>}
       </tr>
     )
   }

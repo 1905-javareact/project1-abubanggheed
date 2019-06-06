@@ -4,7 +4,8 @@ import { reimbursementTypes } from "../actions/reimbursement.actions";
 const initialState: IReimbursements = {
   all: [],
   user: [],
-  single: undefined
+  single: undefined,
+  editOpen: false
 }
 
 export const reimbursementReducer = (state: IReimbursements = initialState, action) => {
@@ -42,6 +43,18 @@ export const reimbursementReducer = (state: IReimbursements = initialState, acti
           ...state,
           all: state.all.filter(reimb => reimb.id !== action.payload.id)
         }
+      }
+    case reimbursementTypes.SET_SINGLE_REIMBURSEMENT:
+      return {
+        ...state,
+        single: action.payload,
+        editOpen: true
+      }
+    case reimbursementTypes.CLOSE_SINGLE_REIMBURSEMENT:
+      return {
+        ...state,
+        single: undefined,
+        editOpen: false
       }
     case 'CLEAR_ALL':
       return initialState
