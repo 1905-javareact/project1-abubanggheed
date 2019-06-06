@@ -11,6 +11,7 @@ import { store } from './store';
 import UsersPage from './components/users/users.container';
 import Dashboard from './components/dashboard/dashboard.container';
 import RequestsPage from './components/requests/requests.container';
+import SingleUser from './components/singleuser/singleuser.container';
 
 const App: React.FC = () => {
   return (
@@ -23,6 +24,7 @@ const App: React.FC = () => {
             <Route path='/users' exact component={LoginWrapper(UsersPage)} />
             <Route path='/dashboard' exact component={LoginWrapper(Dashboard)} />
             <Route path='/requests' exact component={LoginWrapper(RequestsPage)} />
+            <Route path='/user/:id' component={LoginWrapper(SingleUser)} />
             <Route path='/' exact component={LoginWrapper(Home)} />
           </Switch>
         </div>

@@ -23,6 +23,7 @@ export interface ILogin {
 
 export interface IUsers {
   all: User[]
+  single: User
 }
 
 export interface IReimbursements {

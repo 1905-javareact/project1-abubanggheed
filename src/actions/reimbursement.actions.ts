@@ -4,11 +4,15 @@ export const reimbursementTypes = {
   SET_ALL_REIMBURSEMENTS: 'SET_ALL_REIMBURSEMENTS',
   CLEAR_ALL_REIMBURSEMENTS: 'CLEAR_ALL_REIMBURSEMENTS',
   SET_USER_REIMBURSEMENTS: 'SET_USER_REIMBURSEMENTS',
+  CLEAR_USER_REIMBURSEMENTS: 'CLEAR_USER_REIMBURSEMENTS',
   APPEND_USER_REIMBURSEMENTS: 'APPEND_USER_REIMBURSEMENTS',
   UPDATE_REIMBURSEMENT: 'UPDATE_REIMBURSEMENT'
 }
 
 export const getUserReimbursements = (id) => async dispatch => {
+  dispatch({
+    type: reimbursementTypes.CLEAR_USER_REIMBURSEMENTS
+  })
   let response = await reimbursementsClient.get(`/author/userId/${id}`)
   if(response.status === 200) {
     dispatch({
