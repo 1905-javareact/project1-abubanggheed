@@ -9,42 +9,32 @@ interface IDashboardProps {
   getUserReimbursements: (id: number) => void
 }
 
-interface IDashboardState {
-  editMode: boolean
-}
 
-export class Dashboard extends Component<IDashboardProps, IDashboardState> {
+export class Dashboard extends Component<IDashboardProps> {
 
-  state = {
-    editMode: false
-  }
 
   componentDidMount() {
-    if (this.props.selfId && !this.props.reimbursements.length) {
-      this.props.getUserReimbursements(this.props.selfId)
-    }
+    this.props.getUserReimbursements(this.props.selfId)
   }
 
-  handleClick = () => {
-    this.setState({editMode: !this.state.editMode})
-  }
+
 
   render() {
     let reimbursementsToRender = this.props.reimbursements.map(
       obj => <ReimbursementRow
-      key={obj.id} reimbursement={obj}
-      showAuthor={false}
-      showApproveDeny={false}
-      showEditable={false}
+        key={obj.id} reimbursement={obj}
+        showAuthor={false}
+        showApproveDeny={false}
+        showEditable={false}
       />
     )
     return (
       <div>
         <h4>Dashboard</h4>
-        <button onClick={this.handleClick}>{this.state.editMode ? "Close" : "New"}</button>
-        {this.state.editMode && <ReimbursementForm />}
+        
         {this.props.selfId ? <>
           <h6>Reimbursements</h6>
+          <ReimbursementForm />
           {this.props.reimbursements.length ? <table className="table">
             <thead>
               <tr>
