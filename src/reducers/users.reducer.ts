@@ -22,6 +22,13 @@ export const usersReducer = (state: IUsers = initialState, action) => {
         ...state,
         single: undefined
       }
+    case userTypes.UPDATE_SINGLE_USER:
+      return {
+        ...state,
+        all: state.all.map(usr => (
+          usr.userId === action.payload.userId ? action.payload : usr
+        ))
+      }
     default:
       return state
   }

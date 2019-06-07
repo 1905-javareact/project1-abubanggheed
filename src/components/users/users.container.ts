@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { UsersPage } from './users.component';
 import { IState } from '../../reducers';
-import { getUsers } from '../../actions/user.actions'
+import { getUsers, editUser } from '../../actions/user.actions'
 
 const mapStateToProps = (state:IState) => ({
   users: state.users.all,
@@ -9,7 +9,8 @@ const mapStateToProps = (state:IState) => ({
 })
 
 const mapDispatchToProps = {
-  getUsers
+  getUsers,
+  editUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersPage)

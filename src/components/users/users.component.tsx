@@ -7,6 +7,7 @@ interface IUserProps {
   users: User[]
   selfRole: string
   getUsers: () => void
+  editUser: (usr:any) => void
 }
 
 interface IUserState {
@@ -61,7 +62,8 @@ export class UsersPage extends PureComponent<IUserProps, IUserState> {
   
   handleSubmit = event => {
     event.preventDefault()
-    console.log(this.state.currentUser)
+    this.props.editUser(this.state.currentUser)
+    this.closeEdit()
   }
 
   componentDidMount() {
