@@ -4,6 +4,7 @@ import ApproveButton from '../buttons/approve.container';
 import DenyButton from '../buttons/deny.container';
 import DashboardLink from '../buttons/dashboardlink.container';
 import EditButton from '../buttons/edit.container';
+import moment from 'moment'
 
 interface IReimbursementRowProps {
   reimbursement: Reimbursement
@@ -22,8 +23,8 @@ export class ReimbursementRow extends PureComponent<IReimbursementRowProps> {
         {this.props.showAuthor && <td>{data.authorName}</td>}
         <td>{data.amount}</td>
         <td>{data.type}</td>
-        <td>{data.dateSubmitted}</td>
-        <td>{data.dateResolved || 'pending'}</td>
+        <td>{moment(data.dateSubmitted).format('l')}</td>
+        <td>{data.dateResolved? moment(data.dateResolved).format('l') :'pending'}</td>
         <td>{data.description}</td>
         <td>{data.resolverName || 'pending'}</td>
         {this.props.showStatus && <td>{data.status}</td>}

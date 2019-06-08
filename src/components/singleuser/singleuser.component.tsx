@@ -8,9 +8,12 @@ interface ISingleUserProps {
   location:any
   history:any
   user:User
+  self:number
+  usersLength:number
   reimbursements: Reimbursement[]
   getUserById: (id:number) => void
   getUserReimbursements: (id:number) => void
+  getUsers: () => void
 }
 
 export class SingleUser extends Component<ISingleUserProps> {
@@ -18,6 +21,9 @@ export class SingleUser extends Component<ISingleUserProps> {
   componentDidMount() {
     this.props.getUserById(this.props.match.params.id)
     this.props.getUserReimbursements(this.props.match.params.id)
+    if(!this.props.usersLength) {
+      this.props.getUsers()
+    }
   }
 
   render() {
