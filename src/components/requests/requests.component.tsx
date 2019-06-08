@@ -44,19 +44,22 @@ export class RequestsPage extends Component<IRequestPageProps> {
               <th>Date Resolved</th>
               <th>Description</th>
               <th>Resolver</th>
-              <th>Status</th>
               <th>Dashboard</th>
-              <th>Edit</th>
+              {this.state.type === 1 && <>
+                <th>Approve</th>
+                <th>Deny</th>
+              </>}
             </tr>
           </thead>
           <tbody>
             {this.props.reimbursements.map(data => (
               <ReimbursementRow
-              key={data.id}
-              reimbursement={data}
-              showAuthor={true}
-              showApproveDeny={false}
-              showEditable={true}
+                key={data.id}
+                reimbursement={data}
+                showAuthor={true}
+                showStatus={false}
+                showApproveDeny={this.state.type === 1}
+                showEditable={false}
               />
             ))}
           </tbody>

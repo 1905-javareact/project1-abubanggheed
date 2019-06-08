@@ -26,6 +26,7 @@ export class Dashboard extends Component<IDashboardProps> {
         showAuthor={false}
         showApproveDeny={false}
         showEditable={false}
+        showStatus={true}
       />
     )
     return (

@@ -9,7 +9,7 @@ interface IReimbursementEdit {
   self: Number
   cancleEditReimbursement: () => void
   updateEditReimbursement: (key: string, value: any) => void
-  sendEditReimbursement: (fields:any) => void
+  sendEditReimbursement: (fields: any) => void
   getUsers: () => void
 }
 
@@ -38,9 +38,9 @@ export class ReimbursementEdit extends Component<IReimbursementEdit, any> {
       author: data.authorId,
       amount: data.amount,
       dateSubmitted: data.dateSubmitted,
-      dateResolved: data.dateResolved,
+      dateResolved: +data.statusId === 1 ? null : data.dateResolved,
       description: data.description,
-      resolver: data.resolverId,
+      resolver: +data.statusId === 1 ? null : data.resolverId,
       status: data.statusId,
       type: data.typeId
     })
@@ -48,7 +48,9 @@ export class ReimbursementEdit extends Component<IReimbursementEdit, any> {
 
   render() {
     let { data, open, users, self } = this.props
-    let resolvers = users.filter(user => user.role === 'finance-manager')
+    let resolvers = users.filter(user => user.role === 'finance-manager').filter(usr => (
+      +usr.userId !== (data ? +data.authorId: 0)
+    ))
     return (
       <>
         {data && <dialog open={open}>
@@ -63,14 +65,21 @@ export class ReimbursementEdit extends Component<IReimbursementEdit, any> {
             </select>
             <br />
             <input onChange={this.handleChange('dateSubmitted')} value={data.dateSubmitted.slice(0, 10)} type="date" />
-            {data.dateResolved && <>
-              <input onChange={this.handleChange('dateResolved')} value={data.dateResolved.slice(0, 10)} type="date" /><br />
-            </>}
-            {data.dateResolved && <><select onChange={this.handleChange('resolverId')} value={data.resolverId}>
-              {resolvers.map(resolver => (
-                <option value={resolver.userId} key={resolver.userId}>{resolver.username}</option>
-              ))}
-            </select><br /></>}
+            <br />
+            <select value={data.statusId} onChange={this.handleChange('statusId')}>
+              <option value={1}>Pending</option>
+              <option value={2}>Approved</option>
+              <option value={3}>Denied</option>
+            </select>
+            {data.statusId}
+            {+data.statusId !== 1 && <>
+              <input onChange={this.handleChange('dateResolved')} value={data.dateResolved ? data.dateResolved.slice(0, 10) : ''} type="date" /><br />
+              <select onChange={this.handleChange('resolverId')} value={data.resolverId || undefined}>
+                <option value={undefined}>--please select one--</option>
+                {resolvers.map(resolver => (
+                  <option value={resolver.userId} key={resolver.userId}>{resolver.username}</option>
+                ))}
+              </select><br /></>}
             <textarea onChange={this.handleChange('description')} value={data.description} />
             <br />
             <select onChange={this.handleChange('typeId')} value={data.typeId}>

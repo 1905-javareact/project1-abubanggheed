@@ -6,33 +6,43 @@ import { Home } from './components/home/home';
 import { LoginWrapper } from './components/loginwrapper/loginwrapper';
 import NavBar from './components/navbar/navbar.container';
 import Initializer from './components/initialize/initialize'
-import { Provider } from 'react-redux';
-import { store } from './store';
 import UsersPage from './components/users/users.container';
 import Dashboard from './components/dashboard/dashboard.container';
 import RequestsPage from './components/requests/requests.container';
 import SingleUser from './components/singleuser/singleuser.container';
 import ReimbursementEdit from './components/reimbursementeditform/reimbursement.edit.container';
+import NotFound from './components/404page/NotFound.container';
+import { IState } from './reducers';
+import { connect } from 'react-redux';
 
-const App: React.FC = () => {
+const managerRoles = ['finance-manager', 'admin']
+interface IAppProps {
+  role:string
+}
+
+const App: React.FC<IAppProps> = (props:IAppProps) => {
+  let renderManager = managerRoles.includes(props.role)
   return (
     <BrowserRouter>
-      <Provider store={store}>
         <div className="App">
           <Initializer />
           <NavBar />
           <Switch>
-            <Route path='/users' exact component={LoginWrapper(UsersPage)} />
+            {renderManager && <Route path='/users' exact component={LoginWrapper(UsersPage)} />}
             <Route path='/dashboard' exact component={LoginWrapper(Dashboard)} />
-            <Route path='/requests' exact component={LoginWrapper(RequestsPage)} />
-            <Route path='/user/:id' component={LoginWrapper(SingleUser)} />
+            {renderManager && <Route path='/requests' exact component={LoginWrapper(RequestsPage)} />}
+            {renderManager && <Route path='/user/:id' component={LoginWrapper(SingleUser)} />}
             <Route path='/' exact component={LoginWrapper(Home)} />
+            <Route path='/' component={LoginWrapper(NotFound)} />
           </Switch>
           <ReimbursementEdit />
         </div>
-      </Provider>
     </BrowserRouter >
   );
 }
 
-export default App;
+const mapStateToProps = (state:IState) => ({
+  role: state.self.role
+})
+
+export default connect(mapStateToProps)(App);

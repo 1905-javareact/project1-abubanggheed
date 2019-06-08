@@ -10,6 +10,7 @@ interface IReimbursementRowProps {
   showAuthor:boolean
   showApproveDeny:boolean
   showEditable:boolean
+  showStatus:boolean
 }
 
 export class ReimbursementRow extends PureComponent<IReimbursementRowProps> {
@@ -25,7 +26,7 @@ export class ReimbursementRow extends PureComponent<IReimbursementRowProps> {
         <td>{data.dateResolved || 'pending'}</td>
         <td>{data.description}</td>
         <td>{data.resolverName || 'pending'}</td>
-        <td>{data.status}</td>
+        {this.props.showStatus && <td>{data.status}</td>}
         {this.props.showAuthor && <td><DashboardLink author={data.authorId} /></td>}
         {this.props.showApproveDeny && <td><ApproveButton from={this.props.showAuthor ? 'all' :'user'} id={data.id} author={data.authorId} /></td>}
         {this.props.showApproveDeny && <td><DenyButton from={this.props.showAuthor? 'all' :'user'} id={data.id} author={data.authorId} /></td>}

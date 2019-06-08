@@ -39,8 +39,7 @@ export class SingleUser extends Component<ISingleUserProps> {
               <th>Description</th>
               <th>Resolver</th>
               <th>Status</th>
-              <th>Approve</th>
-              <th>Deny</th>
+              <th>Edit</th>
             </tr>
           </thead>
           <tbody>
@@ -49,8 +48,9 @@ export class SingleUser extends Component<ISingleUserProps> {
               key={data.id}
               reimbursement={data}
               showAuthor={false}
-              showApproveDeny={true}
-              showEditable={false}
+              showApproveDeny={false}
+              showEditable={true}
+              showStatus={true}
               />
             ))}
           </tbody>
