@@ -20,7 +20,7 @@ export class UserRow extends PureComponent<IUserProps> {
         <td>{usr.lastName}</td>
         <td>{usr.role}</td>
         <td><DashboardLink author={usr.userId} /></td>
-        {this.props.showEdit && <td><button onClick={this.props.openEdit(usr)}>Edit</button></td>}
+        {this.props.showEdit && <td><button onClick={this.props.openEdit(usr)} className="btn btn-secondary" >Edit</button></td>}
       </tr>
     )
   }

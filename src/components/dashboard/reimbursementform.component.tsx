@@ -51,7 +51,7 @@ export class ReimbursementForm extends Component<IReimbursementFormProps, IReimb
   render() {
     return (
       <>
-        <button onClick={this.handleClick}>{this.state.editMode ? "Close" : "New"}</button>
+        <button onClick={this.handleClick} className="btn btn-primary">{this.state.editMode ? "Close" : "New"}</button>
         {this.state.editMode &&
           <form onSubmit={this.handleSubmit}>
             <input onChange={this.handleNumberChange('amount')} value={this.state.amount} type="number" placeholder="amount" />
@@ -65,7 +65,7 @@ export class ReimbursementForm extends Component<IReimbursementFormProps, IReimb
               <option value="4">Other</option>
             </select>
             <br />
-            <input type="submit" value="send reimbursement request" />
+            <input type="submit" value="send reimbursement request" className="btn btn-success" />
           </form>}
       </>
     )

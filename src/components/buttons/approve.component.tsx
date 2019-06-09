@@ -16,7 +16,7 @@ export class ApproveButton extends Component<IApproveButtonProps> {
 
   render() {
     return (
-      <button onClick={this.handleClick} disabled={this.props.self === this.props.author}>Approve</button>
+      <button onClick={this.handleClick} disabled={this.props.self === this.props.author} className="btn btn-success">Approve</button>
     )
   }
 }

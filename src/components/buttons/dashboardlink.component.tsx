@@ -20,7 +20,7 @@ export class DashboardLink extends Component<IDashboardLinkProps> {
 
   render() {
     return (
-      <button onClick={this.handleClick}>go</button>
+      <button onClick={this.handleClick} className="btn btn-warning">go</button>
     )
   }
 }

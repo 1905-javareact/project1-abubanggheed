@@ -27,7 +27,7 @@ export class LoginForm extends Component<ILoginFormProps, any> {
           <br />
           <input type="password" onChange={this.handleChange('password')} placeholder="password" value={this.props.password} id="password" />
           <br />
-          <input type="submit" value="Log In" />
+          <input className="btn-primary" type="submit" value="Log In" />
         </form>
         <h4>{this.props.errorMessage}</h4>
       </>

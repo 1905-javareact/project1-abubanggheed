@@ -92,11 +92,11 @@ export class ReimbursementEdit extends Component<IReimbursementEdit, any> {
                 <option value={4}>Other</option>
               </select>
               <br />
-              <input type="submit" value="Update Fields" />
+              <input type="submit" value="Update Fields" className="btn-primary" />
             </form>
           </ModalBody>
           <ModalFooter>
-            <button onClick={this.props.cancleEditReimbursement}>Cancel</button>
+            <button onClick={this.props.cancleEditReimbursement} className="btn btn-secondary">Cancel</button>
           </ModalFooter>
         </Modal>}
       </>

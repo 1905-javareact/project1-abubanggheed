@@ -43,7 +43,7 @@ export const reimbursementReducer = (state: IReimbursements = initialState, acti
           ...state,
           editOpen: false,
           single: undefined,
-          all: state.all.map(reimb => (
+          user: state.user.map(reimb => (
             reimb.id === action.payload.id ? action.payload : reimb
           ))
         }

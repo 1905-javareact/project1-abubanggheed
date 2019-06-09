@@ -16,7 +16,7 @@ export class DenyButton extends Component<IDenyButtonProps> {
 
   render() {
     return (
-      <button onClick={this.handleClick} disabled={this.props.self === this.props.author}>Deny</button>
+      <button onClick={this.handleClick} disabled={this.props.self === this.props.author} className="btn btn-danger">Deny</button>
     )
   }
 }

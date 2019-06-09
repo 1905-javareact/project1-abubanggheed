@@ -16,7 +16,7 @@ export class EditButton extends PureComponent<IEditButtonProps> {
 
   render() {
     return (
-      <button onClick={this.handleClick} disabled={this.props.self === this.props.author}>Edit</button>
+      <button onClick={this.handleClick} disabled={this.props.self === this.props.author} className="btn btn-secondary">Edit</button>
     )
   }
 }

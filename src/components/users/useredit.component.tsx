@@ -31,11 +31,11 @@ export class UserEditDialog extends PureComponent<IUserEditDialogProps> {
               <option value={'employee'}>Employee</option>
             </select>
             <br />
-            <input type="submit" value="Save Changes" />
+            <input type="submit" value="Save Changes" className="btn btn-primary" />
           </form>
         </ModalBody>
         <ModalFooter>
-          <button onClick={this.props.closeEdit}>Cancel</button>
+          <button onClick={this.props.closeEdit} className="btn btn-secondary">Cancel</button>
         </ModalFooter>
       </Modal>
     )
