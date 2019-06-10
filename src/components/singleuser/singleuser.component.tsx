@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { User } from '../../models/user';
 import { Reimbursement } from '../../models/reimbursement';
 import { ReimbursementRow } from '../dashboard/reimbursementrow';
@@ -16,7 +16,7 @@ interface ISingleUserProps {
   getUsers: () => void
 }
 
-export class SingleUser extends Component<ISingleUserProps> {
+export class SingleUser extends PureComponent<ISingleUserProps> {
 
   componentDidMount() {
     this.props.getUserById(this.props.match.params.id)

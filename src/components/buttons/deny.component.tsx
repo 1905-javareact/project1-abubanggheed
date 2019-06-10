@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 
 interface IDenyButtonProps {
   self:number
@@ -8,7 +8,7 @@ interface IDenyButtonProps {
   approveDenyReimbursement: (id:number, newStatus:number, from:string) => void
 }
 
-export class DenyButton extends Component<IDenyButtonProps> {
+export class DenyButton extends PureComponent<IDenyButtonProps> {
 
   handleClick = () => {
     this.props.approveDenyReimbursement(this.props.id, 3, this.props.from)

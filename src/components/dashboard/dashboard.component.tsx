@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { Reimbursement } from '../../models/reimbursement';
 import { ReimbursementRow } from './reimbursementrow';
 import ReimbursementForm from './form.container';
@@ -10,7 +10,7 @@ interface IDashboardProps {
 }
 
 
-export class Dashboard extends Component<IDashboardProps> {
+export class Dashboard extends PureComponent<IDashboardProps> {
 
 
   componentDidMount() {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 
 interface IApproveButtonProps {
   self:number
@@ -8,7 +8,7 @@ interface IApproveButtonProps {
   approveDenyReimbursement: (id:number, newStatus:number, from:string) => void
 }
 
-export class ApproveButton extends Component<IApproveButtonProps> {
+export class ApproveButton extends PureComponent<IApproveButtonProps> {
 
   handleClick = () => {
     this.props.approveDenyReimbursement(this.props.id, 2, this.props.from)

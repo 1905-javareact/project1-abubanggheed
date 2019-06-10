@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 interface ILoginFormProps {
   username:string
@@ -8,7 +8,7 @@ interface ILoginFormProps {
   login: (username:string, password:string) => void
 }
 
-export class LoginForm extends Component<ILoginFormProps, any> {
+export class LoginForm extends PureComponent<ILoginFormProps, any> {
 
   handleSubmit = event => {
     event.preventDefault()

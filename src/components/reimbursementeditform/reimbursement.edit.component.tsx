@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { Reimbursement } from '../../models/reimbursement';
 import { User } from '../../models/user';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
@@ -14,7 +14,7 @@ interface IReimbursementEdit {
   getUsers: () => void
 }
 
-export class ReimbursementEdit extends Component<IReimbursementEdit, any> {
+export class ReimbursementEdit extends PureComponent<IReimbursementEdit> {
 
   componentDidMount() {
     if (!this.props.users.length) {

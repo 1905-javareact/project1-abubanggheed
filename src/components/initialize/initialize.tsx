@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router';
 import { getSelf } from '../../actions/login.actions'
 import { connect } from 'react-redux';
@@ -10,7 +10,7 @@ interface InitializerProps {
   getSelf: () => void
 }
 
-class Initializer extends Component<InitializerProps> {
+class Initializer extends PureComponent<InitializerProps> {
 
   componentDidMount() {
     this.props.getSelf()

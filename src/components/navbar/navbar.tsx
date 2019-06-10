@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { Link } from 'react-router-dom';
 
 interface INavBarProps {
@@ -9,7 +9,7 @@ interface INavBarProps {
 const managerRolls = ['finance-manager', 'admin']
 // const adminRolls = ['admin']
 
-export class NavBar extends Component<INavBarProps> {
+export class NavBar extends PureComponent<INavBarProps> {
 
   handleClick = () => {
     this.props.logOut()

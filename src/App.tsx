@@ -2,7 +2,7 @@ import React from 'react';
 import './include/bootstrap'
 import './App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { Home } from './components/home/home';
+import Home from './components/home/home.container';
 import { LoginWrapper } from './components/loginwrapper/loginwrapper';
 import NavBar from './components/navbar/navbar.container';
 import Initializer from './components/initialize/initialize'

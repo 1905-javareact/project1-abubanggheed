@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 
 interface IDashboardLinkProps {
   author:number
@@ -8,7 +8,7 @@ interface IDashboardLinkProps {
   match:any
 }
 
-export class DashboardLink extends Component<IDashboardLinkProps> {
+export class DashboardLink extends PureComponent<IDashboardLinkProps> {
 
   handleClick = () => {
     if(this.props.self === this.props.author) {
